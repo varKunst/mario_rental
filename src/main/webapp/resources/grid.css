@@ -1,0 +1,59 @@
+.root {
+  display: grid;
+  grid-template-areas: 
+    "header"
+    "nav"
+    "section"
+    "footer"
+  ;
+  width: 700px;
+  margin: auto;
+}
+
+header {
+  grid-area: header;
+  background-color: rgb(210,22,29);
+  padding: auto;
+}
+
+nav {
+  grid-area: nav;
+  background-color: rgb(30,90,218);
+  padding: auto;
+}
+
+section {
+  grid-area: section;
+  padding: auto;
+  margin: 20px 0 20px 0;
+}
+
+footer {
+  grid-area: footer;
+  background-color: rgb(255,210,0);
+  padding: auto;
+}
+
+header > h1 {
+	text-align: center;
+}
+
+header > ul {
+	display: flex;
+	justify-content: flex-end;
+}
+
+nav > ul {
+	display:flex;
+	justify-content: space-around;
+}
+
+ul > li {
+  list-style: none;
+  margin-right: 15px;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
