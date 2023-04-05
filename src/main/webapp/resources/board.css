@@ -1,0 +1,17 @@
+.board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.board > table {
+  width: 600px;
+  border: 1px solid rgb(70,173,55);
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid rgb(70,173,55);
+  padding: 5px;
+}

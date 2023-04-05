@@ -1,26 +1,24 @@
-package member.controller;
+package controller;
 
-import java.util.*;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import member.Member;
+import controller.action.Action;
 
 /**
- * Servlet implementation class LogInAction
+ * Servlet implementation class Service
  */
-public class LogInAction extends HttpServlet {
+public class Service extends HttpServlet  {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LogInAction() {
+    public Service() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,20 +27,16 @@ public class LogInAction extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("id");
-		String password = request.getParameter("password");
 		
-		MemberDao memberDao = MemberDao.getInstance();
-		ArrayList<Member> list = memberDao.getMemberAll();
+		// 명령에 따라 서로 다른 처리 로직을 수행하도록 함
+		String command = request.getParameter("command");
 		
-		for(Member member: list) {
-			if(member.getId().equals(id) && member.getPassword().equals(password)) {
-				HttpSession session = request.getSession();
-				session.setAttribute("log", member);
-				
-				response.sendRedirect("main");
-			}
-		}
+		// 서로 다른 수행문 실행할 메소드
+		ActionFactory factory = ActionFactory.getInstance();	// Factory method Pattern (생성패턴)
+		Action action = factory.getAction(command);				// Command Pattern (행위패턴)
+		
+		if(action!=null)
+			action.execute(request, response);
 	}
 
 	/**
@@ -53,5 +47,4 @@ public class LogInAction extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		doGet(request, response);
 	}
-
 }
