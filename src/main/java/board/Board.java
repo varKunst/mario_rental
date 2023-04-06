@@ -48,6 +48,10 @@ public class Board {
 	public String getContent() {
 		return content;
 	}
+	
+	public String getType() {
+		return type;
+	}
 
 	public Timestamp getRegidate() {
 		return regidate;

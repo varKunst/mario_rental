@@ -42,21 +42,54 @@ public class BoardDao {
 		}
 	}
 	
-	public ArrayList<Board> getBoardList() {
-		ArrayList<Board> list = new ArrayList<Board>();
+	public Board getBoard(int number, String type) {
+		Board board = null;
 		this.conn = DBManager.getConnection();
 		if(this.conn!=null) {
-			String sql = "SELECT board_no, m_code, board_title, board_type, regidate FROM board ORDER BY board_no DESC";
+			String sql = "SELECT * FROM board WHERE board_no = ? AND board_type= ?";
 			
 			try {
 				this.pstmt = this.conn.prepareStatement(sql);
+				this.pstmt.setInt(1, number);
+				this.pstmt.setString(2, type);
+				this.rs = this.pstmt.executeQuery();
+				
+				if(this.rs.next()) {
+					int code = this.rs.getInt(1);
+					String title = this.rs.getString(3);
+					String content = this.rs.getString(4);
+					int writer = this.rs.getInt(5);
+					Timestamp regidate = this.rs.getTimestamp(7);
+					Timestamp modifDate = this.rs.getTimestamp(8);
+					
+					board = new Board(code, number, writer, title, content, type, regidate, modifDate);
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				DBManager.close(this.conn, this.pstmt, this.rs);
+			}
+		}
+		
+		return board;
+	}
+	
+	public ArrayList<Board> getBoardList(String type) {
+		ArrayList<Board> list = new ArrayList<Board>();
+		this.conn = DBManager.getConnection();
+		if(this.conn!=null) {
+			String sql = "SELECT board_no, m_code, board_title, board_type, regidate FROM board WHERE board_type = ? ORDER BY board_no DESC";
+			
+			try {
+				this.pstmt = this.conn.prepareStatement(sql);
+				this.pstmt.setString(1, type);
 				this.rs = this.pstmt.executeQuery();
 				
 				while(this.rs.next()) {
 					int number = this.rs.getInt(1);
 					int writer = this.rs.getInt(2);
 					String title = this.rs.getString(3);
-					String type = this.rs.getString(4);
 					Timestamp regidate = this.rs.getTimestamp(5);
 					System.out.println("regDate: " + regidate);
 					

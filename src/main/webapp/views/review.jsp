@@ -28,7 +28,7 @@
 					<%
 					BoardDao boardDao = BoardDao.getInstance();
 					MemberDao memberDao = MemberDao.getInstance();
-					String type = "1";
+					String type = "2";
 					
 					ArrayList<Board> list = boardDao.getBoardList(type);
 					

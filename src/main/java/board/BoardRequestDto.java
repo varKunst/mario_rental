@@ -8,6 +8,14 @@ public class BoardRequestDto {
 	private String title, content, type;
 	private Timestamp regidate, modifDate;
 
+	// to write
+	public BoardRequestDto( int writer, String title, String content, String type) {
+		this.writer = writer;
+		this.title = title;
+		this.content = content;
+		this.type = type;
+	}
+
 	public BoardRequestDto(int number, int writer, String title, String type, Timestamp regidate) {
 		this.number = number;
 		this.writer = writer;

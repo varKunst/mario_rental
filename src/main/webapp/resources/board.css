@@ -1,5 +1,6 @@
 .board {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: auto;
@@ -9,6 +10,17 @@
   width: 600px;
   border: 1px solid rgb(70,173,55);
   border-collapse: collapse;
+}
+
+.board > .write {
+	width: 150px;
+	height: 30px;
+	margin: 15px;
+}
+
+.write:hover {
+	cursor: pointer;
+	background-color: rgb(70,173,55);
 }
 
 th, td {

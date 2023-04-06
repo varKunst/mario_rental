@@ -1,10 +1,6 @@
 package controller;
 
-import controller.action.Action;
-import controller.action.JoinAction;
-import controller.action.LogInAction;
-import controller.action.LogOutAction;
-import controller.action.UpdateAction;
+import controller.action.*;
 
 public class ActionFactory {
 	
@@ -25,6 +21,10 @@ public class ActionFactory {
 			action = new LogOutAction();
 		else if(command.equals("update"))
 			action = new UpdateAction();
+		else if(command.equals("write"))
+			action = new WriteAction();
+		else if(command.equals("rental"))
+			action = new RentalAction();
 			
 		return action;
 	}

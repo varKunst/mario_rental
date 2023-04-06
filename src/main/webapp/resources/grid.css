@@ -1,3 +1,7 @@
+* {
+  font-family: 'Ubuntu', sans-serif;
+}
+
 .root {
   display: grid;
   grid-template-areas: 
@@ -18,7 +22,6 @@ a:not(h1) {
 header {
   grid-area: header;
   padding: auto;
-  font-family: 'Ubuntu', sans-serif;
 }
 
 nav {
