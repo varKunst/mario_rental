@@ -25,8 +25,8 @@
 		<jsp:include page="header"></jsp:include>
 		<section>
 			<div class="box">
-			<h3><%=member.getName() %> 회원님이 렌트하실 지역을 선택하세요.</h3>
-				<form method="post" action="rental">
+			<h3>지점을 선택해주세요.</h3>
+				<form action="vehicle">
 					<select name="vnCode">
 						<%
 						VenueDao venueDao = VenueDao.getInstance();

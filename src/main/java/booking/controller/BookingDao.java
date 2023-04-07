@@ -78,7 +78,7 @@ public class BookingDao {
 		ArrayList<Booking> list = new ArrayList<Booking>();
 		this.conn = DBManager.getConnection();
 		if(this.conn!=null) {
-			String sql = "SELECT * FROM booking WHERE m_code = ?";
+			String sql = "SELECT * FROM booking WHERE m_code = ? ORDER BY b_code DESC";
 			
 			try {
 				this.pstmt = this.conn.prepareStatement(sql);

@@ -27,7 +27,8 @@
 	</header>
 	<nav>
 		<ul>
-			<li><a href="select">렌터카</a></li>
+			<li><a href="select">렌트</a></li>
+			<li><a href="venue">차량정보</a></li>
 			<li><a href="community">커뮤니티</a></li>
 		</ul>
 	</nav>

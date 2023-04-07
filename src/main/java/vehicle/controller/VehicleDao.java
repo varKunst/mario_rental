@@ -84,4 +84,34 @@ public class VehicleDao {
 		
 		return list;
 	}
+
+	public ArrayList<Vehicle> getVehicleAll() {
+		ArrayList<Vehicle> list = new ArrayList<Vehicle>();
+		this.conn = DBManager.getConnection();
+		if(this.conn!=null) {
+			String sql = "SELECT * FROM vehicles";
+			
+			try {
+				this.pstmt = this.conn.prepareStatement(sql);
+				this.rs = this.pstmt.executeQuery();
+				
+				while(this.rs.next()) {
+					int code = this.rs.getInt(1);
+					String name = this.rs.getString(2);
+					String cate = this.rs.getString(3);
+					int hourRate = this.rs.getInt(4);
+					
+					Vehicle vehicle = new Vehicle(code, name, cate, hourRate);
+					list.add(vehicle);
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				DBManager.close(this.conn, this.pstmt, this.rs);
+			}
+		}
+		
+		return list;
+	}
 }
