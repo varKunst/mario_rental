@@ -37,7 +37,10 @@
 					<td colspan="2"><%=board.getContent() %></td>
 				</tr>
 			</table>
-			<button onclick="location.href='<%=back %>'">목록으로</button>
+			<div class="btnArea">
+				<button onclick="location.href='modify?type=<%=type %>&number=<%=number %>'">수정하기</button>
+				<button onclick="location.href='<%=back %>'">목록으로</button>			
+			</div>
 		</section>
 		<jsp:include page="footer"></jsp:include>
 	</div>

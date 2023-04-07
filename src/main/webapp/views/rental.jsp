@@ -31,8 +31,8 @@
 	<div class="root">
 		<jsp:include page="header"></jsp:include>
 		<section>
-			<div>
-				<h3><%=venue.getName() %> 지역 보유 차량</h3>
+			<div class="box">
+				<h3><%=venue.getName() %> 지점 보유 차량</h3>
 				<form method="post" action="service">
 					<input type="hidden" name="command" value="rental">
 					<input type="hidden" name="mCode" value="<%=member.getCode()%>">
@@ -42,10 +42,9 @@
 							<option value="<%=vehicle.getCode()%>"><%=vehicle.getName() %></option>						
 						<% } %>
 					</select>
-					<select name="period">
-						<option value=""></option>
-					</select>
-					<input type="submit" value="submit">
+					<input type="hidden" name="vnCode" value="<%=vnCode %>">
+					<input type="text" name="period" placeholder="시간 단위로 입력해주세요">
+					<input type="submit" class="button" value="submit">
 				</form>
 			</div>
 		</section>

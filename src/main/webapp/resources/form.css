@@ -9,6 +9,11 @@ form > input, .button {
   margin: 10px;
 }
 
+select {
+  width: 200px;
+  height: 50px;
+}
+
 .box {
   border: 1px solid rgb(70,173,55);
   display: flex;

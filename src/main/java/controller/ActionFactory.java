@@ -23,6 +23,8 @@ public class ActionFactory {
 			action = new UpdateAction();
 		else if(command.equals("write"))
 			action = new WriteAction();
+		else if(command.equals("modify"))
+			action = new ModifyAction();
 		else if(command.equals("rental"))
 			action = new RentalAction();
 			

@@ -1,0 +1,9 @@
+.bookingList {
+  border: 1px solid rgb(70,173,55);
+  width: 500px;
+  margin: 15px;
+}
+
+.bookingList > ul {
+  list-style: none;
+}

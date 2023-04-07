@@ -19,8 +19,8 @@
 	String linkMyPage = "<a href='myPage'>마이페이지</a>";
 	%>
 	<header>
-		<h1><a href="main">MARIO RENTAL</a></h1>
-		<ul>
+		<h1 class="logo"><a href="main">MARIO RENTAL</a></h1>
+		<ul class="menu">
 			<li><%=member==null? linkLogIn: linkLogOut %></li>
 			<li><%=member==null? linkJoin: linkMyPage %></li>
 		</ul>

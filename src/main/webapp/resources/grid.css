@@ -21,6 +21,10 @@ a:not(h1) {
 
 header {
   grid-area: header;
+  grid-area-template: 
+  "menu"
+  "logo"
+  ;
   padding: auto;
 }
 
@@ -45,11 +49,13 @@ footer {
 }
 
 header > h1 {
+  grid-area: logo;
   color: rgb(210,22,29);
-	text-align: center;
+  text-align: center;
 }
 
 header > ul {
+  grid-area: menu;
 	display: flex;
 	justify-content: flex-end;
 }

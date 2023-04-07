@@ -20,6 +20,7 @@ Member member = (Member)session.getAttribute("log");
 				<h2><%=member.getName() %>님 환영합니다.</h2>
 				<ul>
 					<li><a href="update">정보수정</a></li>
+					<li><a href="reservation?mCode=<%=member.getCode() %>">예약내역확인</a></li>
 				</ul>
 			</div>
 		</section>

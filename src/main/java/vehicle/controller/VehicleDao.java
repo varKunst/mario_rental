@@ -23,6 +23,36 @@ public class VehicleDao {
 	}
 	
 	// create
+
+	public Vehicle getVehicleByCode(int vCode) {
+		Vehicle vehicle = null;
+		this.conn = DBManager.getConnection();
+		if(this.conn!=null) {
+			String sql = "SELECT * FROM vehicles WHERE v_code = ?";
+			
+			try {
+				this.pstmt = this.conn.prepareStatement(sql);
+				this.pstmt.setInt(1, vCode);
+				this.rs = this.pstmt.executeQuery();
+				
+				if(this.rs.next()) {
+					int code = this.rs.getInt(1);
+					String name = this.rs.getString(2);
+					String cate = this.rs.getString(3);
+					int hourRate = this.rs.getInt(4);
+					
+					vehicle = new Vehicle(code, name, cate, hourRate);
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				DBManager.close(this.conn, this.pstmt, this.rs);
+			}
+		}
+		
+		return vehicle;
+	}
 	
 	public ArrayList<Vehicle> getVehicleList(int vnCode) {
 		ArrayList<Vehicle> list = new ArrayList<Vehicle>();

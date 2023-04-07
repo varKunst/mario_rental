@@ -108,4 +108,30 @@ public class BoardDao {
 		
 		return list;
 	}
+	
+	public void UpdateBoard(int number, String type) {
+		Board board = getBoard(number, type);
+		this.conn = DBManager.getConnection();
+		if(board!=null && this.conn!=null) {
+			String sql = "UPDATE board SET board_title = ?, board_content = ?, modif_date = current_timestamp() "
+					+ "WHERE board_no = ? AND board_type = ?";
+			
+			String title = board.getTitle();
+			String content = board.getContent();
+			
+			try {
+				this.pstmt = this.conn.prepareStatement(sql);
+				this.pstmt.setString(1, title);
+				this.pstmt.setString(2, content);
+				this.pstmt.setInt(3, number);
+				this.pstmt.setString(4, type);
+				this.pstmt.execute();
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				DBManager.close(this.conn, this.pstmt);
+			}
+		}
+	}
 }

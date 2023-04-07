@@ -6,6 +6,14 @@ public class BookingRequestDto {
 
 	private int code, mCode, vCode, vnCode, charge, period;
 	Timestamp bookDate, bookSubmit;
+
+	public BookingRequestDto(int mCode, int vCode, int vnCode, int charge, int period) {
+		this.mCode = mCode;
+		this.vCode = vCode;
+		this.vnCode = vnCode;
+		this.charge = charge;
+		this.period = period;
+	}
 	
 	public BookingRequestDto(int code, int mCode, int vCode, int vnCode, int charge, int period, 
 			Timestamp bookDate, Timestamp bookSubmit) {
